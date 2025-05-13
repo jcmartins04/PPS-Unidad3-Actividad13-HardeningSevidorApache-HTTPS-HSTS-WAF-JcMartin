@@ -218,10 +218,10 @@ service apache2 reload
 Ya podemos acceder a nuestro servidor desde:
 
 ~~~
-http://www.pps.edu/
+http://www.JcMartin.com/
 ~~~
 
-![](images/hard5.png)
+![](images/Apache1.png)
 
 ---
 
