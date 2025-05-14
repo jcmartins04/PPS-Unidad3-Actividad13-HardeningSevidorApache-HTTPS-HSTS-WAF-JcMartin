@@ -136,7 +136,7 @@ Vamos a modificar el  archivo`/etc/apache2/sites-available/000-default.conf`. Lo
 ~~~
 <VirtualHost *:80>
 
-        ServerName www.pps.edu
+        ServerName www.JcMartin.com
 	ServerAdmin webmaster@localhost
         DocumentRoot /var/www/html
 
@@ -225,7 +225,7 @@ http://www.JcMartin.com/
 
 ---
 
-## 5. Creación de un servidor virtual **Hackker**
+## 5. Creación de un servidor virtual **ErHacker**
 
 Vamos a crear un servidor virtual nuevo para alojar los archivos maliciosos. El directorio estará en `/var/www/hacker` y el nombre del servidor será `www.hacker.edu`
 
@@ -247,7 +247,7 @@ Finalmente creamos el archivo de configuración del sitio:
 ~~~
 <VirtualHost *:80>
 
-    ServerName www.hacker.edu
+    ServerName www.erhacker.edu
 
     ServerAdmin webmaster@localhost
     DocumentRoot /var/www/hacker
@@ -259,9 +259,9 @@ Finalmente creamos el archivo de configuración del sitio:
 
 ~~~
 
-Accedemos desde `http://www.hacker.edu`
+Accedemos desde `http://www.erhacker.edu:88`
 
-![](images/hard6.png)
+![](images/Apache2.png)
 
 
 ---
@@ -339,7 +339,7 @@ Lo modificamos y dejamos así:
 ~~~
 <VirtualHost *:80>
 
-    ServerName www.pps.edu
+    ServerName www.JcMartin.com
 
     ServerAdmin webmaster@localhost
     DocumentRoot /var/www/html
@@ -350,7 +350,7 @@ Lo modificamos y dejamos así:
 </VirtualHost>
 
 <VirtualHost *:443>
-    ServerName www.pps.edu
+    ServerName www.JcMartin.com
 
    //activar uso del motor de protocolo SSL 
     SSLEngine on
@@ -361,7 +361,7 @@ Lo modificamos y dejamos así:
 </VirtualHost>
 ~~~
 
-Date cuenta que hemos creado un **servidor virtual** con nombre **www.pps.edu**. A partir de ahora tendremos que introducir en la barra de dirección del navegador `https://www.pps.edu` en vez de `https://localhost`.
+Date cuenta que hemos creado un **servidor virtual** con nombre **www.JcMartin.com**. A partir de ahora tendremos que introducir en la barra de dirección del navegador `https://www.pps.edu` en vez de `https://localhost`.
 
 
 **Paso3: Habilitar SSL y el sitio:**
@@ -380,7 +380,7 @@ service apache2 reload
 
 Añadimos nuestro dominio en el archivo /etc/hosts de nuestra máquina anfitriona para que resulva bien los dns. [Lo tienes explicado en una sección anterior(## Resolución_de_ nombres:_dns_o_fichero_**/etc/hosts**)
 
-Ahora el servidor soportaría **HTTPS**. Accedemos al servidor en la siguiente dirección: `https://www.pps.edu`
+Ahora el servidor soportaría **HTTPS**. Accedemos al servidor en la siguiente dirección: `https://www.JcMartin.com`
 
 
 ### Método 2: Obtener Certificado en un servidor Linux usando Let's Encrypt y Certbot**
@@ -506,14 +506,14 @@ Tienes dos opciones:
 
 ~~~
 <VirtualHost *:80>
-    ServerName pps.edu
-    ServerAlias www.pps.edu
+    ServerName JcMartin.com
+    ServerAlias www.jcmartin.com
 
-    Redirect permanent / https://pps.edu/
+    Redirect permanent / https://jcmartin.com/
 </VirtualHost>
 
 <VirtualHost *:443>
-    ServerName pps.edu
+    ServerName jcmartin.com
     DocumentRoot /var/www/html
 
     SSLEngine on
@@ -530,8 +530,8 @@ Tienes dos opciones:
 
 ```apache
 <VirtualHost *:80>
-    ServerName pps.edu
-    ServerAlias www.pps.edu
+    ServerName jcmartin.com
+    ServerAlias www.jcmartin.com
 
     RewriteEngine On
     RewriteCond %{HTTPS} off
@@ -571,7 +571,7 @@ service apache2 reload
 
 ## 8. 🛡️  Implementación y Evaluación de Content Security Policy (CSP)
 
-Puedes ver este contenido con más profundidad en el siguiente repositorio: <https://github.com/jmmedinac03vjp/PPS-Unidad3Actividad20-CSP>
+Puedes ver este contenido con más profundidad en el siguiente repositorio: <https://github.com/jmmedinac03/PPS-Unidad3Actividad20-CSP>
 
 Para reforzar más HTTPS podemos implementar la política de seguridad de contenidos:
 
